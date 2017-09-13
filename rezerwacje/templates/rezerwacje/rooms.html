@@ -1,0 +1,11 @@
+{%extends 'rezerwacje/base.html'%}
+{%block content%}
+<form>
+	<select>
+	{%for pok in pokoje%}
+	<option>{{pok}}</option>
+	{%endfor%}
+	</select>
+	
+</form>
+{%endblock%}

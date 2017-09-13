@@ -1,0 +1,14 @@
+{% extends 'rezerwacje/base.html' %}
+{% block content %}
+	<div id="login">
+	<form method="POST">{% csrf_token %}
+		Login
+		<input type="text" name="user">
+		</br></br>
+		Hasło
+		<input type="password" name="pass">
+		</br></br>
+		<input type="submit" value="Zaloguj Się">		
+	</form>
+	</div>
+{% endblock %}

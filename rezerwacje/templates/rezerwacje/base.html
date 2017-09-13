@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" href="{% static 'css/base.css' %}">
+	<title>Pilchy SPA</title>
+	</head>
+	<body>
+		<div id="logo">
+			PILCHY SPA
+		</div>
+		{% block content %}
+		<div id="content" width="100%">
+		</div>
+		{% endblock %}
+	</body>
+</html>
