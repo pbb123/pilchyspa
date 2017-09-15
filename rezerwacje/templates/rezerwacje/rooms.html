@@ -1,11 +1,12 @@
 {%extends 'rezerwacje/base.html'%}
 {%block content%}
-<form>
+<form method="POST">{% csrf_token %}
 	<select>
 	{%for pok in pokoje%}
 	<option>{{pok}}</option>
 	{%endfor%}
 	</select>
+	<input type="submit" value="Dalej">
 	
 </form>
 {%endblock%}

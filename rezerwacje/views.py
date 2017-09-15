@@ -20,23 +20,25 @@ def new(request):
     if request.user.is_authenticated:
         family=get_object_or_404(Rodzina,user=request.user)
         if request.method=="POST":
-            od=int(request.POST['od'])
-            do=int(request.POST['do'])
+            od=request.POST['od']
+            do=request.POST['do']
             rezerwacje=Rezerwacja.objects.all()
             pokoje=Pokoj.objects.all()
-            if od<=do:
+            if od<do:
                 rezerwacje=rezerwacje.exclude(od__lt=od,do__lt=od)
                 rezerwacje=rezerwacje.exclude(od__gt=do,do__gt=do)
                 for rez in rezerwacje:
                     pokoj=rez.pokoj
                     pokoje=pokoje.exclude(pk=pokoj.pk)
-                return render(request,'rezerwacje/rooms.html',{'family':family,'pokoje':pokoje})
-            #Zły termin: od>do
-            return render(request,'rezerwacje/rooms.html',{'family':family,'komunikat':'nie'})
+                return render(request,'rezerwacje/rooms.html',{'pokoje':pokoje})
+            else:
+                return render(request,'rezerwacje/new.html',{'family':family})
         else:
             return render(request,'rezerwacje/new.html',{'family':family})
     else:
         return redirect('login')
+
+
 
     
     
