@@ -22,6 +22,14 @@ def new(request):
         if request.method=="POST":
             od=request.POST['od']
             do=request.POST['do']
+            return redirect('rooms',od=od,do=do)  
+        else:
+            return render(request,'rezerwacje/new.html',{'family':family})
+    else:
+        return redirect('login')
+def rooms(request,od,do):
+    if request.user.is_authenticated:
+        if request.method=="GET":
             rezerwacje=Rezerwacja.objects.all()
             pokoje=Pokoj.objects.all()
             if od<do:
@@ -32,19 +40,15 @@ def new(request):
                     pokoje=pokoje.exclude(pk=pokoj.pk)
                 return render(request,'rezerwacje/rooms.html',{'pokoje':pokoje})
             else:
-                return render(request,'rezerwacje/new.html',{'family':family})
-            
-            
+                #od<do
+                return redirect('new')
+
         else:
-            return render(request,'rezerwacje/new.html',{'family':family})
+            #metoda POST
+            pass
     else:
+        #Nie zalogowany
         return redirect('login')
-def rooms(request):
-    if request.user.is_authenticated:
-        pass
-    else:
-        return redirect('login')
-    
 
 
     
