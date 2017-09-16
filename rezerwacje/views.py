@@ -35,17 +35,20 @@ def rooms(request,od,do):
             if od<do:
                 rezerwacje=rezerwacje.exclude(od__lt=od,do__lt=od)
                 rezerwacje=rezerwacje.exclude(od__gt=do,do__gt=do)
+                a=False
                 for rez in rezerwacje:
+                    a=True
                     pokoj=rez.pokoj
                     pokoje=pokoje.exclude(pk=pokoj.pk)
-                return render(request,'rezerwacje/rooms.html',{'pokoje':pokoje})
+                return render(request,'rezerwacje/rooms.html',{'pokoje':pokoje,'komunikat':pokoje})
             else:
                 #od<do
                 return redirect('new')
 
         else:
             #metoda POST
-            pass
+            komunikat="Udało się"
+            return render(request,'rezerwacje/koniec_rezerwacji.html',{'komunikat':komunikat})
     else:
         #Nie zalogowany
         return redirect('login')

@@ -7,6 +7,8 @@ class Rodzina(models.Model):
 class Pokoj(models.Model):
     rozmiar=models.IntegerField()
     nazwa=models.TextField()
+    def __str__(self):
+         return self.nazwa
 class Rezerwacja(models.Model):
      od=models.IntegerField()
      do=models.IntegerField()
