@@ -33,11 +33,18 @@ def new(request):
                 return render(request,'rezerwacje/rooms.html',{'pokoje':pokoje})
             else:
                 return render(request,'rezerwacje/new.html',{'family':family})
+            
+            
         else:
             return render(request,'rezerwacje/new.html',{'family':family})
     else:
         return redirect('login')
-
+def rooms(request):
+    if request.user.is_authenticated:
+        pass
+    else:
+        return redirect('login')
+    
 
 
     
