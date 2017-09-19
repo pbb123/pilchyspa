@@ -1,6 +1,7 @@
 body
 {
-	background: url(../images/Pilchy.jpg);
+	background-image: url(../images/Pilchy.jpg);
+	background-size: cover;
 	font-size: 20px;
 }
 

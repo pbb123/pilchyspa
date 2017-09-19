@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as l
 # Create your views here.
 def login(request):
+    if request.user.is_authenticated:
+        return render(request,'rezerwacje/zalogowany.html',{'user':request.user})
     if request.method=="POST":
         user=request.POST['user']
         password=request.POST['pass']
@@ -63,6 +65,8 @@ def rooms(request,od,do):
         #Nie zalogowany
         return redirect('login')
 
-
+def see(request):
+    rez=Rezerwacja.objects.all()
+    return render(request,'rezerwacje/see.html',{'rezerwacje':rez})
     
     

@@ -1,0 +1,10 @@
+{% extends 'rezerwacje/base.html' %}
+{%block content%}
+<ul>
+{%for rez in rezerwacje%}
+<li>
+{{rez}}
+</li>
+{%endfor%}
+</ul>
+{%endblock%}
