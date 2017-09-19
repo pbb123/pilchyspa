@@ -1,9 +1,17 @@
 body
 {
-	background-image: url(../images/ravenna.png);
-	
+	background-image: url(../images/Pilchy.jpg);
 	background-size: cover;
 	font-size: 20px;
+}
+#footer
+{	
+	margin-left:0;
+	position:absolute;
+	bottom:0;
+	width:100%;
+	background-color: darkgray;
+	
 }
 #content{
 	width:100%;
@@ -38,16 +46,4 @@ input[type=submit]{
 }
 a{
 ;
-}
-.ikona
-{
-	font-size:200px;
-	text-align:center;
-	height: 30px;
-	width:50%;
-	float:left;
-}
-#ikony
-{
-	width:100%;
 }

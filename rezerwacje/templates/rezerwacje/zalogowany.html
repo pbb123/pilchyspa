@@ -1,8 +1,17 @@
 {% extends 'rezerwacje/base.html' %}
+{% block logo %}
+{% endblock %}
 {%block content%}
 Udało się! Jesteś zalogowany jako {{user}}.
 </br>
-<a href="/new">Kliknij aby dodać rezerwację</a></br>
-<a href="/see">Kliknij by zobaczyć rezerwacje</a>
+<div id="ikona">
+<div class="ikona">
+<a href="/new" title="Dodaj nową rezerwację"><i class="icon-plus-circled"></i></a>
+</div>
+<div class="ikona">
+<a href="/see" title="Zobacz rezerwację"><i class="icon-th-list"></i></a>
+</div>
+
+
 {%endblock%}
 

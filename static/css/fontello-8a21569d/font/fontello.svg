@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2017 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="logout" unicode="&#xe800;" d="M502 0l0 100 98 0 0-100q0-40-29-70t-71-30l-400 0q-40 0-70 30t-30 70l0 700q0 42 30 71t70 29l400 0q42 0 71-29t29-71l0-150-98 0 0 150-402 0 0-700 402 0z m398 326l-198-196 0 120-450 0 0 150 450 0 0 120z" horiz-adv-x="900" />
+
+<glyph glyph-name="th-list" unicode="&#xe801;" d="M286 154v-108q0-22-16-37t-38-16h-178q-23 0-38 16t-16 37v108q0 22 16 38t38 15h178q23 0 38-15t16-38z m0 285v-107q0-22-16-38t-38-15h-178q-23 0-38 15t-16 38v107q0 23 16 38t38 16h178q23 0 38-16t16-38z m714-285v-108q0-22-16-37t-38-16h-535q-23 0-38 16t-16 37v108q0 22 16 38t38 15h535q23 0 38-15t16-38z m-714 571v-107q0-22-16-38t-38-16h-178q-23 0-38 16t-16 38v107q0 22 16 38t38 16h178q23 0 38-16t16-38z m714-286v-107q0-22-16-38t-38-15h-535q-23 0-38 15t-16 38v107q0 23 16 38t38 16h535q23 0 38-16t16-38z m0 286v-107q0-22-16-38t-38-16h-535q-23 0-38 16t-16 38v107q0 22 16 38t38 16h535q23 0 38-16t16-38z" horiz-adv-x="1000" />
+
+<glyph glyph-name="plus-circled" unicode="&#xe802;" d="M679 314v72q0 14-11 25t-25 10h-143v143q0 15-11 25t-25 11h-71q-15 0-25-11t-11-25v-143h-143q-14 0-25-10t-10-25v-72q0-14 10-25t25-10h143v-143q0-15 11-25t25-11h71q15 0 25 11t11 25v143h143q14 0 25 10t11 25z m178 36q0-117-57-215t-156-156-215-58-216 58-155 156-58 215 58 215 155 156 216 58 215-58 156-156 57-215z" horiz-adv-x="857.1" />
+
+<glyph glyph-name="trash" unicode="&#xf1f8;" d="M286 82v393q0 8-5 13t-13 5h-36q-8 0-13-5t-5-13v-393q0-8 5-13t13-5h36q8 0 13 5t5 13z m143 0v393q0 8-5 13t-13 5h-36q-8 0-13-5t-5-13v-393q0-8 5-13t13-5h36q8 0 13 5t5 13z m142 0v393q0 8-5 13t-12 5h-36q-8 0-13-5t-5-13v-393q0-8 5-13t13-5h36q7 0 12 5t5 13z m-303 554h250l-27 65q-4 5-9 6h-177q-6-1-10-6z m518-18v-36q0-8-5-13t-13-5h-54v-529q0-46-26-80t-63-34h-464q-37 0-63 33t-27 79v531h-53q-8 0-13 5t-5 13v36q0 8 5 13t13 5h172l39 93q9 21 31 35t44 15h178q23 0 44-15t30-35l39-93h173q8 0 13-5t5-13z" horiz-adv-x="785.7" />
+</font>
+</defs>
+</svg>
