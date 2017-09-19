@@ -29,25 +29,35 @@ def new(request):
         return redirect('login')
 def rooms(request,od,do):
     if request.user.is_authenticated:
+        rezerwacje=Rezerwacja.objects.all()
+        pokoje=Pokoj.objects.all()
         if request.method=="GET":
-            rezerwacje=Rezerwacja.objects.all()
-            pokoje=Pokoj.objects.all()
             if od<do:
                 rezerwacje=rezerwacje.exclude(od__lt=od,do__lt=od)
                 rezerwacje=rezerwacje.exclude(od__gt=do,do__gt=do)
-                a=False
                 for rez in rezerwacje:
-                    a=True
                     pokoj=rez.pokoj
                     pokoje=pokoje.exclude(pk=pokoj.pk)
-                return render(request,'rezerwacje/rooms.html',{'pokoje':pokoje,'komunikat':pokoje})
+                return render(request,'rezerwacje/rooms.html',{'pokoje':pokoje})
             else:
                 #od<do
                 return redirect('new')
 
         else:
             #metoda POST
-            komunikat="Udało się"
+            pokojid=request.POST['pokoje']
+            rezerwacje=Rezerwacja.objects.all()
+            rezerwacje=rezerwacje.exclude(od__lt=od,do__lt=od)
+            rezerwacje=rezerwacje.exclude(od__gt=do,do__gt=do)
+            rezerwacje=rezerwacje.filter(pokoj__id=pokojid)
+            if len(rezerwacje)==0:
+                pokoj=Pokoj.objects.get(id=pokojid)
+                rodzina=Rodzina.objects.get(user=request.user)
+                nowa=Rezerwacja.objects.create(rodzina=rodzina,pokoj=pokoj,od=od,do=do)
+                nowa.save()
+                komunikat=True
+            else:
+                komunikat=False
             return render(request,'rezerwacje/koniec_rezerwacji.html',{'komunikat':komunikat})
     else:
         #Nie zalogowany

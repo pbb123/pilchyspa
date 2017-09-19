@@ -1,4 +1,8 @@
 {%extends 'rezerwacje/base.html'%}
 {%block content%}
-{{komunikat}}
+{%if komunikat%}
+Gratulacje udało ci się zarezerwować miejsce w PILCHYSPA.
+{%else%}
+Niestety ten Pokoj został zarezerwowany w tym terminie.
+{%endif%}
 {%endblock%}
