@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Rodzina,Rezerwacja,Pokoj
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,logout
 from django.contrib.auth import login as l
 # Create your views here.
 def login(request):
@@ -66,7 +66,19 @@ def rooms(request,od,do):
         return redirect('login')
 
 def see(request):
-    rez=Rezerwacja.objects.all()
-    return render(request,'rezerwacje/see.html',{'rezerwacje':rez})
+    if request.user.is_authenticated:
+        rez=Rezerwacja.objects.all()
+        return render(request,'rezerwacje/see.html',{'rezerwacje':rez})
+    else:
+        return redirect('login')
+def setings(request):
+    if request.user.is_authenticated:
+        return render(request,'rezerwacje/set.html',{})
+    else:
+        return redirect('login')
+def logoutview(request):
+    logout(request)
+    return redirect('login')
+
     
     
