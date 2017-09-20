@@ -29,6 +29,12 @@
       "css": "plus-circled",
       "code": 59394,
       "src": "fontawesome"
+    },
+    {
+      "uid": "3e2bd88137dd7ceec98b4bfd8640e5ec",
+      "css": "params",
+      "code": 59395,
+      "src": "linecons"
     }
   ]
 }
