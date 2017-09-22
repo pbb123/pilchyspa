@@ -1,5 +1,7 @@
 {% extends 'rezerwacje/base.html' %}
 {%block content%}
+<div class="title">Oto wszystkie rezerwacje:</div>
+<div class="info">
 <ul>
 {%for rez in rezerwacje%}
 <li>
@@ -7,4 +9,6 @@
 </li>
 {%endfor%}
 </ul>
+</div>
+
 {%endblock%}

@@ -1,8 +1,11 @@
 {% extends 'rezerwacje/base.html' %}
 {%if family.user.is_authenticated%}
 {%block content%}
+<div class="title">
 Krok pierwszy:
 Wybierz Termin:
+</div>
+<div class="info">
 <form method="POST">{% csrf_token %}
 	Od:<select name="od">
 		<option value="1">Dzień 1</option>
@@ -25,6 +28,7 @@ Wybierz Termin:
 	</br>
 <input type="submit" value="Dalej">
 </form>
+</div>
 
 {%endblock%}
 {%endif%}

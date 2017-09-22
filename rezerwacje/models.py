@@ -19,3 +19,7 @@ class Rezerwacja(models.Model):
      def __str__(self):
          return "Od: "+str(self.od)+" Do: "+str(self.do)+" Przez: "+str(self.rodzina)+" W pokoju: "+str(self.pokoj)
     
+class Error(models.Model):
+    rodzina=models.ForeignKey(Rodzina)
+    opis=models.TextField()
+    

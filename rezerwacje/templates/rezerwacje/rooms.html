@@ -1,12 +1,16 @@
 {%extends 'rezerwacje/base.html'%}
 {%block content%}
+<div class="title">Teraz wybierz pokój.</div>
+<div class="info">
 <form method="POST">{% csrf_token %}
 	<select name="pokoje">
 	{%for pok in pokoje%}
 	<option  value="{{pok.id}}">{{pok}}</option>
 	{%endfor%}
 	</select>
+	</br>
 	<input type="submit" value="Dalej">
 	
 </form>
+</div>
 {%endblock%}

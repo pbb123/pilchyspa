@@ -1,9 +1,11 @@
 {%extends 'rezerwacje/base.html'%}
 {%block content%}
+<div class="title">
 {%if komunikat%}
 Gratulacje udało ci się zarezerwować miejsce w PILCHYSPA.
 {%else%}
 Niestety ten Pokoj został zarezerwowany w tym terminie.
 {%endif%}
+</div>
 <a href="/">Powrót</a>
 {%endblock%}

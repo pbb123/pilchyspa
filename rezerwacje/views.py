@@ -1,18 +1,18 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from .models import Rodzina,Rezerwacja,Pokoj
+from .models import Rodzina,Rezerwacja,Pokoj,Error
 from django.contrib.auth import authenticate,logout
 from django.contrib.auth import login as l
 # Create your views here.
 def login(request):
     if request.user.is_authenticated:
-        return render(request,'rezerwacje/zalogowany.html',{'user':request.user})
+        return redirect('menu')
     if request.method=="POST":
         user=request.POST['user']
         password=request.POST['pass']
         user=authenticate(username=user,password=password)
         if user is not None:
             l(request, user)
-            return render(request,'rezerwacje/zalogowany.html',{'user':request.user})
+            return redirect('menu')
         else:
             return render(request,'rezerwacje/index.html',{})
     else:
@@ -79,6 +79,35 @@ def setings(request):
 def logoutview(request):
     logout(request)
     return redirect('login')
-
+def menu(request):
+    return render(request,'rezerwacje/zalogowany.html',{'user':request.user})
     
-    
+def changepass(request):
+    if request.user.is_authenticated:
+        if request.method=="POST":
+            old=request.POST['starehaslo']
+            new1=request.POST['nowehaslo']
+            new2=request.POST['nowehaslo2']
+            oldc=authenticate(username=request.user.username,password=old)
+            if oldc and new1==new2:
+                oldc.set_password(new1)
+                oldc.save()
+                return render(request,'rezerwacje/changepassyes.html',{})
+            else:
+                return render(request,'rezerwacje/changepassno.html',{})
+        else:
+            return render(request,'rezerwacje/changepass.html',{})
+    else:
+        return redirect('login')
+def adderror(request):
+    if request.user.is_authenticated:
+        if request.method=="POST":
+            rodzina=get_object_or_404(Rodzina,user=request.user)
+            opis=request.POST['opis']
+            nowy=Error.objects.create(opis=opis,rodzina=rodzina)
+            nowy.save()
+            return render(request,'rezerwacje/errors2.html',{})
+        else:
+            return render(request,'rezerwacje/errors.html',{})
+    else:
+        return redirect('login')
