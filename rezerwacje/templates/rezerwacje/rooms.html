@@ -1,16 +1,14 @@
 {%extends 'rezerwacje/base.html'%}
+{% load staticfiles %}
 {%block content%}
 <div class="title">Teraz wybierz pokój.</div>
 <div class="info">
-<form method="POST">{% csrf_token %}
-	<select name="pokoje">
+<img src="{% static 'images/pokoje.png' %}" usemap="pokojmap">
+
+<map name="pokojmap">
 	{%for pok in pokoje%}
-	<option  value="{{pok.id}}">{{pok}}</option>
-	{%endfor%}
-	</select>
-	</br>
-	<input type="submit" value="Dalej">
-	
-</form>
+	<area  title="{{pok.nazwa}}" href="{{od}}/{{od}}{{pok.maphref}}" shape="{{pok.mapshape}}" coords="{{pok.mapcoords}}">
+	{%endfor%}	
+</map>HHH
 </div>
 {%endblock%}

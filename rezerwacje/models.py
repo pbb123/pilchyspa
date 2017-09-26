@@ -9,6 +9,9 @@ class Rodzina(models.Model):
 class Pokoj(models.Model):
     rozmiar=models.IntegerField()
     nazwa=models.TextField()
+    maphref=models.TextField()
+    mapshape=models.TextField()
+    mapcoords=models.TextField()
     def __str__(self):
          return self.nazwa
 class Rezerwacja(models.Model):

@@ -1,0 +1,17 @@
+<map name="Map" id="Map">
+    <area alt="" title="" href="#" shape="poly" coords="356,48,418,48,418,118,356,119" />
+    <area alt="" title="" href="#" shape="poly" coords="291,127,317,127,317,159,291,158" />
+    <area alt="" title="" href="#" shape="poly" coords="238,119,263,119,263,158,238,158" />
+    <area alt="" title="" href="#" shape="poly" coords="210,127,237,126,236,159,211,158" />
+    <area alt="" title="" href="#" shape="poly" coords="185,126,208,126,209,158,185,158" />
+    <area alt="" title="" href="#" shape="poly" coords="159,118,159,157,183,158,185,118" />
+    <area alt="" title="" href="#" shape="poly" coords="161,95,185,94,185,117,161,117" />
+    <area alt="" title="" href="#" shape="poly" coords="160,76,160,94,184,94,185,76" />
+    <area alt="" title="" href="#" shape="poly" coords="159,36,160,66,186,67,186,36" />
+    <area alt="" title="" href="#" shape="poly" coords="188,36,211,35,228,35,228,66,211,66,211,67,188,67" />
+    <area alt="" title="" href="#" shape="rect" coords="211,35" />
+    <area alt="" title="" href="#" shape="poly" coords="230,35,253,35,252,67,230,67" />
+    <area alt="" title="" href="#" shape="poly" coords="226,76,252,76,252,92,226,92" />
+    <area alt="" title="" href="#" shape="poly" coords="227,93,227,107,253,107,253,92" />
+    
+</map>

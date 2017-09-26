@@ -20,12 +20,23 @@ def login(request):
 
 def new(request):
     if request.user.is_authenticated:
+        rezerwacje=Rezerwacja.objects.all()
+        pokoje=Pokoj.objects.all()
         family=get_object_or_404(Rodzina,user=request.user)
         if request.method=="POST":
             od=request.POST['od']
             do=request.POST['do']
-            return redirect('rooms',od=od,do=do)  
-        else:
+            if od<do:
+                rezerwacje=rezerwacje.exclude(od__lt=od,do__lt=od)
+                rezerwacje=rezerwacje.exclude(od__gt=do,do__gt=do)
+                for rez in rezerwacje:
+                    pokoj=rez.pokoj
+                    pokoje=pokoje.exclude(pk=pokoj.pk)
+                return render(request,'rezerwacje/rooms.html',{'pokoje':pokoje,'od':od,'do':do})
+            else:
+                #od<do
+                return redirect('new')  
+        else:#
             return render(request,'rezerwacje/new.html',{'family':family})
     else:
         return redirect('login')
@@ -34,17 +45,7 @@ def rooms(request,od,do):
         rezerwacje=Rezerwacja.objects.all()
         pokoje=Pokoj.objects.all()
         if request.method=="GET":
-            if od<do:
-                rezerwacje=rezerwacje.exclude(od__lt=od,do__lt=od)
-                rezerwacje=rezerwacje.exclude(od__gt=do,do__gt=do)
-                for rez in rezerwacje:
-                    pokoj=rez.pokoj
-                    pokoje=pokoje.exclude(pk=pokoj.pk)
-                return render(request,'rezerwacje/rooms.html',{'pokoje':pokoje})
-            else:
-                #od<do
-                return redirect('new')
-
+            pass
         else:
             #metoda POST
             pokojid=request.POST['pokoje']
