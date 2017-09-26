@@ -40,15 +40,14 @@ def new(request):
             return render(request,'rezerwacje/new.html',{'family':family})
     else:
         return redirect('login')
-def rooms(request,od,do):
+def rezerwacja(request,od,do,pok):
     if request.user.is_authenticated:
         rezerwacje=Rezerwacja.objects.all()
         pokoje=Pokoj.objects.all()
         if request.method=="GET":
-            pass
-        else:
-            #metoda POST
-            pokojid=request.POST['pokoje']
+            #metoda GET
+            pokoj=get_object_or_404(Pokoj,maphref="/"+pok)
+            pokojid=pokoj.id
             rezerwacje=Rezerwacja.objects.all()
             rezerwacje=rezerwacje.exclude(od__lt=od,do__lt=od)
             rezerwacje=rezerwacje.exclude(od__gt=do,do__gt=do)
