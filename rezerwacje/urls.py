@@ -12,5 +12,6 @@ urlpatterns = [
     url(r'^menu/$',views.menu,name='menu'),
     url(r'^set/changepass/$',views.changepass,name='changepass'),
     url(r'^set/errors/$',views.adderror,name='error'),
+    url(r'^del/(?P<id>[0-9]+)/$',views.delete,name='del'),
 
     ]

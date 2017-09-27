@@ -68,7 +68,7 @@ def rezerwacja(request,od,do,pok):
 def see(request):
     if request.user.is_authenticated:
         rez=Rezerwacja.objects.all()
-        return render(request,'rezerwacje/see.html',{'rezerwacje':rez})
+        return render(request,'rezerwacje/see.html',{'rezerwacje':rez,'u':request.user})
     else:
         return redirect('login')
 def setings(request):
@@ -109,5 +109,13 @@ def adderror(request):
             return render(request,'rezerwacje/errors2.html',{})
         else:
             return render(request,'rezerwacje/errors.html',{})
+    else:
+        return redirect('login')
+def delete(request,id):
+    if request.user.is_authenticated:
+        rez=get_object_or_404(Rezerwacja,id=id)
+        if rez.rodzina.user==request.user:
+            rez.delete()
+        return redirect('see')
     else:
         return redirect('login')

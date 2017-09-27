@@ -63,4 +63,4 @@
 .icon-plus-circled:hover:before { content: '\e802'; color: lightgreen; }
 .icon-params:before { content: '\e803'; color:black;}
 .icon-params:hover:before { content: '\e803'; color:gray;} /* '' */
-.icon-trash:before { content: '\f1f8'; } /* '' */
+.icon-trash:before { content: '\f1f8';color:black; } /* '' */
