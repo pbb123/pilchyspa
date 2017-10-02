@@ -60,12 +60,16 @@ a{
 	text-align: center;
 }
 .info
-{
-	width: 500px;
+{   
+	width: 600px;
 	margin-left:auto;
 	margin-right:auto;
 	text-align: center;
 }
 li{
 	text-align:left;
+}
+.error
+{
+	color:red;
 }

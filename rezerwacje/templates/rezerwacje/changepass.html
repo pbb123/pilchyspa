@@ -2,6 +2,7 @@
 {%block content%}
 <div class="title">Witaj w zmianie hasła</div>
 <div class="info">
+{%if e%}<div class="error">Wprowadzone dane są błędne</div>{%endif%}
 <form method="POST">{% csrf_token %}
 	Stare hasło:<input type="password" name="starehaslo"></br>
 	Nowe hasło:<input type="password" name="nowehaslo"></br>

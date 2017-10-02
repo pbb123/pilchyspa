@@ -5,13 +5,16 @@
 <ul>
 {%for rez in rezerwacje%}
 <li>
-{{rez}} {%if rez.rodzina.user == u%}<a href="/del/{{rez.id}}" title="Usuń">
+{{rez}} {%if rez.rodzina.user == u%}
+<a href="/del/{{rez.id}}" title="Usuń">
 <i class="icon-trash">
-</i></a>
+</i>
+</a>
 {%endif%}
 </li>
 {%endfor%}
 </ul>
+<a href="/menu">Powrót</a>
 </div>
 
 {%endblock%}

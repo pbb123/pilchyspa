@@ -25,7 +25,7 @@ SECRET_KEY = 'nl_b!t_kq3md967m^+q24u8*fqhc96*)b6r4$f8v%n+d^6ddp-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pilchyspa.pythonanywhere.com']
 
 
 # Application definition

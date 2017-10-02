@@ -1,6 +1,7 @@
 {% extends 'rezerwacje/base.html' %}
 {% block content %}
 	<div id="login">
+	{%if e%}<div class="error"><b>Błędny login lub hasło</b></div>{%endif%}
 	<form method="POST">{% csrf_token %}
 		Login
 		<input type="text" name="user">

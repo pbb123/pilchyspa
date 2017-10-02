@@ -14,9 +14,9 @@ def login(request):
             l(request, user)
             return redirect('menu')
         else:
-            return render(request,'rezerwacje/index.html',{})
+            return render(request,'rezerwacje/index.html',{'e':True})
     else:
-        return render(request,'rezerwacje/index.html',{})
+        return render(request,'rezerwacje/index.html',{'e':False})
 
 def new(request):
     if request.user.is_authenticated:
@@ -52,6 +52,12 @@ def rezerwacja(request,od,do,pok):
             rezerwacje=rezerwacje.exclude(od__lt=od,do__lt=od)
             rezerwacje=rezerwacje.exclude(od__gt=do,do__gt=do)
             rezerwacje=rezerwacje.filter(pokoj__id=pokojid)
+            rezerwacje_rodziny=Rezerwacja.objects.filter(rodzina=get_object_or_404(Rodzina,user=request.user))
+            zarezerwowane_miejsca=0
+            komunikat=False
+            for rez in rezerwacje_rodziny:
+                zarezerwowane_miejsca+=rez.pokoj.rozmiar
+            pozostałe_osoby=get_object_or_404(Rodzina,user=request.user).liczebność-zarezerwowane_miejsca
             if len(rezerwacje)==0:
                 pokoj=Pokoj.objects.get(id=pokojid)
                 rodzina=Rodzina.objects.get(user=request.user)
@@ -60,7 +66,7 @@ def rezerwacja(request,od,do,pok):
                 komunikat=True
             else:
                 komunikat=False
-            return render(request,'rezerwacje/koniec_rezerwacji.html',{'komunikat':komunikat})
+            return render(request,'rezerwacje/koniec_rezerwacji.html',{'komunikat':komunikat,'z_m':pozostałe_osoby})
     else:
         #Nie zalogowany
         return redirect('login')
@@ -94,9 +100,9 @@ def changepass(request):
                 oldc.save()
                 return render(request,'rezerwacje/changepassyes.html',{})
             else:
-                return render(request,'rezerwacje/changepassno.html',{})
+                return render(request,'rezerwacje/changepass.html',{'e':True})
         else:
-            return render(request,'rezerwacje/changepass.html',{})
+            return render(request,'rezerwacje/changepass.html',{'e':False})
     else:
         return redirect('login')
 def adderror(request):
