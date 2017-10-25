@@ -35,8 +35,8 @@ def new(request):
                 return render(request,'rezerwacje/rooms.html',{'pokoje':pokoje,'od':od,'do':do})
             else:
                 #od<do
-                return redirect('new')  
-        else:#
+                return render(request,'rezerwacje/new.html',{'family':family,'e':True}) 
+        else:#get
             return render(request,'rezerwacje/new.html',{'family':family})
     else:
         return redirect('login')
@@ -86,8 +86,10 @@ def logoutview(request):
     logout(request)
     return redirect('login')
 def menu(request):
-    return render(request,'rezerwacje/zalogowany.html',{'user':request.user})
-    
+    if request.user.is_authenticated:
+        return render(request,'rezerwacje/zalogowany.html',{'user':request.user})
+    else:
+        return redirect('login')    
 def changepass(request):
     if request.user.is_authenticated:
         if request.method=="POST":
@@ -98,6 +100,7 @@ def changepass(request):
             if oldc and new1==new2:
                 oldc.set_password(new1)
                 oldc.save()
+                logout(request)
                 return render(request,'rezerwacje/changepassyes.html',{})
             else:
                 return render(request,'rezerwacje/changepass.html',{'e':True})
@@ -125,3 +128,5 @@ def delete(request,id):
         return redirect('see')
     else:
         return redirect('login')
+def autor(request):
+    return render(request,'rezerwacje/autor.html',{})

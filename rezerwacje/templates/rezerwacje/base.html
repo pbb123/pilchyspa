@@ -3,22 +3,23 @@
 <html>
 	<head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'css/fontello-16c78ded/css/fontello.css' %}" type="text/css" />
 	<link rel="stylesheet" href="{% static 'css/base.css' %}">
-	<link rel="stylesheet" href="{% static 'css/fontello-c81fd4fa/css/fontello.css' %}" type="text/css" />
 	<title>Pilchy SPA</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	</head>
 	<body>
 		<div id="logo">
-			PILCHY SPA
+			<a href="/menu">PILCHY SPA</a>
 		</div>
-		{% block logo %}
-		{% endblock %}
 		
 		<div id="content">
 		{% block content %}
 		{% endblock %}
 		</div>
-		
+		<div class="footer">
+		{% block footer %}
+			&copy 2017 Piotrek Brzoza-Brzezina
+		{% endblock %}
+		</div>
 	</body>
 </html>

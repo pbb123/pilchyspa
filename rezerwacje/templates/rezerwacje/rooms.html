@@ -3,8 +3,8 @@
 {%block content%}
 <div class="title">Teraz wybierz pokój.</div>
 <div class="info">
+{%if not pokoje%}<div class="error">Uwaga w tym terminie nie są dostępne już żadne pokoje!</div>{%endif%}
 <img src="{% static 'images/pokoje.png' %}" usemap="pokojmap">
-
 <map name="pokojmap">
 	{%for pok in pokoje%}
 	<area  title="{{pok.nazwa}}" href="{{od}}/{{do}}{{pok.maphref}}" shape="{{pok.mapshape}}" coords="{{pok.mapcoords}}">
