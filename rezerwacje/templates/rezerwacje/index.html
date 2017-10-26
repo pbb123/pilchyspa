@@ -2,11 +2,10 @@
 {% load staticfiles %}
 {% block content %}
 	<script>
-	var url="{%static 'images/slider/v0'%}"
+	var url="{%static 'images/slider'%}"
 	var url2="{%static 'audio'%}"
 	</script>
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="{% static 'js/script.js' %}"></script>
 	<div id="sound" onclick="offon()"><i class="icon-volume-low"></i></div>
 	<div id="login">
 	{%if e%}<div class="error"><b>Błędny login lub hasło</b></div>{%endif%}
@@ -20,4 +19,5 @@
 		<input type="submit" value="Zaloguj Się" onfocus="onfocus2()" onblur="lost()">		
 	</form>
 	</div>
+	<script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
