@@ -9,19 +9,19 @@ function lost(){
 }
 
 
-/*
+
 //slider
 var numer=Math.round(Math.random()*10);
 function zmień()
 {
-	var plik="pilchyspa"+url+"/image"+numer+".jpg";
+	var plik=url+"/image"+numer+".jpg";
 	//console.log(url);
 	$('body').css('background-image','url('+plik+')');
 	numer++;if (numer>10){numer=0};
 	setTimeout(zmień,5000);
 	
 	
-}*/
+}
 //sound
 var sounds= new Array(2)
 sounds[0]=url2+"/Sound1.m4a"
