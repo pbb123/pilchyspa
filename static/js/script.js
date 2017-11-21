@@ -14,7 +14,7 @@ function lost(){
 var numer=Math.round(Math.random()*10);
 function zmień()
 {
-	var plik=url+"/image"+numer+".jpg";
+	var plik=url+"/image"+numer+".JPG";
 	//console.log(url);
 	$('body').css('background-image','url('+plik+')');
 	numer++;if (numer>10){numer=0};
