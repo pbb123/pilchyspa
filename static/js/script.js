@@ -9,8 +9,7 @@ function lost(){
 }
 
 
-
-
+/*
 //slider
 var numer=Math.round(Math.random()*10);
 function zmień()
@@ -22,7 +21,7 @@ function zmień()
 	setTimeout(zmień,5000);
 	
 	
-}
+}*/
 //sound
 var sounds= new Array(2)
 sounds[0]=url2+"/Sound1.m4a"
