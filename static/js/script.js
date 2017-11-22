@@ -11,7 +11,7 @@ function lost(){
 
 
 //slider
-var numer=Math.round(Math.random()*10);
+var numer=Math.round(Math.random()*11-0.5);
 function zmień()
 {
 	var plik=url+"/image"+numer+".JPG";
@@ -28,7 +28,7 @@ sounds[0]=url2+"/Sound1.m4a"
 sounds[1]=url2+"/Sound2.mp3"
 sounds[2]=url2+"/Sound3.mp3"
 var snd=null
-var soundnr=Math.round(Math.random()*3);
+var soundnr=Math.round(Math.random()*3-0.5);
 var play=true;
 function offon()
 {
