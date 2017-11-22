@@ -28,7 +28,7 @@ sounds[0]=url2+"/Sound1.m4a"
 sounds[1]=url2+"/Sound2.mp3"
 sounds[2]=url2+"/Sound3.mp3"
 var snd=null
-var soundnr=0
+var soundnr=Math.round(Math.random()*3);
 var play=true;
 function offon()
 {
