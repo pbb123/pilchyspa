@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from .models import Rodzina,Rezerwacja,Pokoj,Error
+from .models import Rodzina,Rezerwacja,Pokoj,Error,Day
 from django.contrib.auth import authenticate,logout
 from django.contrib.auth import login as l
 # Create your views here.
@@ -61,12 +61,13 @@ def rezerwacja(request,od,do,pok):
             if len(rezerwacje)==0:
                 pokoj=Pokoj.objects.get(id=pokojid)
                 rodzina=Rodzina.objects.get(user=request.user)
-                nowa=Rezerwacja.objects.create(rodzina=rodzina,pokoj=pokoj,od=od,do=do)
+                nowa=Rezerwacja.objects.create(rodzina=rodzina,pokoj=pokoj,od=od,do=do,rozmiar=pokoj.rozmiar)
                 nowa.save()
                 komunikat=True
+                return redirect('ludzie',nowa.id)
             else:
                 komunikat=False
-            return render(request,'rezerwacje/koniec_rezerwacji.html',{'komunikat':komunikat,'z_m':pozostałe_osoby})
+                return render(request,'rezerwacje/koniec_rezerwacji.html',{'komunikat':komunikat,'z_m':pozostałe_osoby})
     else:
         #Nie zalogowany
         return redirect('login')
@@ -124,9 +125,67 @@ def delete(request,id):
     if request.user.is_authenticated:
         rez=get_object_or_404(Rezerwacja,id=id)
         if rez.rodzina.user==request.user:
+            rezs=Rezerwacja.objects.all()
+            rezs=rezs.exclude(od__lt=rez.od,do__lt=rez.od)
+            rezs=rezs.exclude(od__gt=rez.do,do__gt=rez.do)
             rez.delete()
+            for rezerwacja in rezs:
+                for dayx in range(rezerwacja.od,rezerwacja.do+1):
+                    day=get_object_or_404(Day,numer=dayx)
+                    suma=0
+                    rezerwacje=Rezerwacja.objects.all()
+                    rezerwacje=rezerwacje.exclude(od__lt=dayx,do__lt=dayx)
+                    rezerwacje=rezerwacje.exclude(od__gt=dayx,do__gt=dayx)
+                    for rez in rezerwacje:
+                        suma+=rez.rozmiar
+                    if suma<day.limit:
+                        rezerwacja.limit=False
+                        rezerwacja.save()
+
         return redirect('see')
     else:
         return redirect('login')
 def autor(request):
     return render(request,'rezerwacje/autor.html',{})
+def ludzie(request,pk):
+    if request.user.is_authenticated:
+        rezerwacja=get_object_or_404(Rezerwacja,id=pk)
+        if request.method=="POST":
+            rozmiar=request.POST['x']
+            rezerwacja.rozmiar=rozmiar
+            rezerwacja.save()
+            flag=False
+            for dayx in range(rezerwacja.od,rezerwacja.do+1):
+                day=get_object_or_404(Day,numer=dayx)
+                suma=0
+                rezerwacje=Rezerwacja.objects.all()
+                rezerwacje=rezerwacje.exclude(od__lt=dayx,do__lt=dayx)
+                rezerwacje=rezerwacje.exclude(od__gt=dayx,do__gt=dayx)
+                for rez in rezerwacje:
+                    suma+=rez.rozmiar
+                if suma>day.limit:
+                    flag=True
+                    rezerwacja.limit=True
+                    rezerwacja.save()
+                    return redirect('limit',pk=pk)
+                    
+            return render(request,'rezerwacje/koniec_rezerwacji.html',{'komunikat':True})
+        else:
+            return render(request,'rezerwacje/people.html',{})
+            #get
+    else:
+        return redirect('login')  
+def limit(request,pk):
+    if request.user.is_authenticated:
+        if request.method=="POST":
+            wynik=request.POST['h']
+            if wynik=="uny":
+                return render(request,'rezerwacje/koniec_rezerwacji.html',{'komunikat':True})
+            elif wynik=="duy":
+                return redirect('del',id=pk)
+            return render(request,"rezerwacje/limit.html",{'a':wynik})
+        else:
+            return render(request,"rezerwacje/limit.html",{})
+
+    else:
+        return redirect('login')

@@ -232,3 +232,64 @@ ol,ul
 {
 	text-align:center;
 }
+#adw
+{
+	display:none;
+	transition: all 4s;
+}
+button
+{
+	
+	
+}
+input[type=number]
+{
+	outline:none;
+	background-color:#37ad64;
+	width:50px;
+	border-radius:10px;
+	border: 2px solid #48be75;;
+}
+button:focus
+{
+	outline:none;
+	-webkit-box-shadow: 0px 0px 47px 0px rgba(204,204,204,1);
+	-moz-box-shadow: 0px 0px 47px 0px rgba(204,204,204,1);
+	box-shadow: 0px 0px 47px 0px rgba(204,204,204,1);
+}
+
+
+input[type=number]:focus
+{
+	outline:none;
+	-webkit-box-shadow: 0px 0px 47px 0px rgba(204,204,204,1);
+	-moz-box-shadow: 0px 0px 47px 0px rgba(204,204,204,1);
+	box-shadow: 0px 0px 47px 0px rgba(204,204,204,1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

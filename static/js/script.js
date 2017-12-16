@@ -60,4 +60,44 @@ function playsound()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
 $(document).ready(function(){playsound();zmień()})

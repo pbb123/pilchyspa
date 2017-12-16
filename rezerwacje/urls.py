@@ -14,5 +14,7 @@ urlpatterns = [
     url(r'^set/errors/$',views.adderror,name='error'),
     url(r'^del/(?P<id>[0-9]+)/$',views.delete,name='del'),
     url(r'^set/autor/$',views.autor,name='autor'),
+    url(r'^new/people/(?P<pk>[0-9]+)/$',views.ludzie,name='ludzie'),
+    url(r'^new/people/(?P<pk>[0-9]+)/limit$',views.limit,name='limit')
 
     ]
