@@ -9,29 +9,14 @@ Wybierz Termin:
 {%if e%}<div class="error">Błędne dane!</div>{%endif%}
 <form method="POST">{% csrf_token %}
 	Od:<select name="od">
-		<option value="1">Dzień 1</option>
-		<option value="2">Dzień 2</option>
-		<option value="3">Dzień 3</option>
-		<option value="4">Dzień 4</option>
-		<option value="5">Dzień 5</option>
-		<option value="6">Dzień 6</option>
-		<option value="7">Dzień 7</option>
-		<option value="8">Dzień 8</option>
-		<option value="9">Dzień 9</option>
-		<option value="10">Dzień 10</option>
-		
+	{%for day in days%}
+		<option value="{{day.numer}}">{{day.nazwa}}({{day.limit}})</option>
+	{%endfor%}
 	</select>
 	Do:<select name="do">
-		<option value="1">Dzień 1</option>
-		<option value="2">Dzień 2</option>
-		<option value="3">Dzień 3</option>
-		<option value="4">Dzień 4</option>
-		<option value="5">Dzień 5</option>
-		<option value="6">Dzień 6</option>
-		<option value="7">Dzień 7</option>
-		<option value="8">Dzień 8</option>
-		<option value="9">Dzień 9</option>
-		<option value="10">Dzień 10</option>
+	{%for day in days%}
+		<option value="{{day.numer}}">{{day.nazwa}}({{day.limit}})</option>
+	{%endfor%}
 	</select>
 <input type="submit" value="Dalej">
 </form>

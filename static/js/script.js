@@ -11,14 +11,14 @@ function lost(){
 
 
 //slider
-var numer=Math.round(Math.random()*11-0.5);
+var numer=Math.round(Math.random()*9-0.5);
 function zmień()
 {
 	var plik=url+"/image"+numer+".JPG";
 	//console.log(url);
 	$('body').css('background-image','url('+plik+')');
-	numer++;if (numer>10){numer=0};
-	setTimeout(zmień,5000);
+	//numer++;if (numer>10){numer=0};
+	//setTimeout(zmień,5000);
 	
 	
 }
