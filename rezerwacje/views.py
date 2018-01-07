@@ -20,13 +20,13 @@ def login(request):
 
 def new(request):
     if request.user.is_authenticated:
-        days=Day.objects.all()
+        days=Day.objects.filter().order_by('numer')
         rezerwacje=Rezerwacja.objects.all()
         pokoje=Pokoj.objects.all()
         family=get_object_or_404(Rodzina,user=request.user)
         if request.method=="POST":
-            od=request.POST['od']
-            do=request.POST['do']
+            od=int(request.POST['od'])
+            do=int(request.POST['do'])
             if od<do:
                 rezerwacje=rezerwacje.exclude(od__lt=od,do__lt=od)
                 rezerwacje=rezerwacje.exclude(od__gt=do,do__gt=do)
@@ -36,7 +36,7 @@ def new(request):
                 return render(request,'rezerwacje/rooms.html',{'pokoje':pokoje,'od':od,'do':do})
             else:
                 #od<do
-                return render(request,'rezerwacje/new.html',{'family':family,'e':True,'days':days}) 
+                return render(request,'rezerwacje/new.html',{'family':family,'e':True,'days':days,'a':(od,do)}) 
         else:#get
             return render(request,'rezerwacje/new.html',{'family':family,'days':days})
     else:#niezalogowany

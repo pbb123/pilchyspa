@@ -6,7 +6,7 @@ Krok pierwszy:
 Wybierz Termin:
 </div>
 <div class="select" >
-{%if e%}<div class="error">Błędne dane!</div>{%endif%}
+{%if e%}<div class="error">Błędne dane!    {{a}} {{b}}</div>{%endif%}
 <form method="POST">{% csrf_token %}
 	Od:<select name="od">
 	{%for day in days%}
