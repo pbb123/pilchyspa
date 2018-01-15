@@ -5,7 +5,9 @@
 <script src="{% static 'js/people.js' %}"></script>
 <div class="title">Ile osób będzie mieszkać w tym pokoju?</div>
 <div class="info">
-{{x}}
+{%if e%}
+<div class="error">Błędne dane!</div>
+{%endif%}
 <div id="base">
 	<form method="post">{% csrf_token %}
 		<input type="number" name="x"/>

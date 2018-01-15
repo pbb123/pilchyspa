@@ -1,7 +1,7 @@
 {% extends 'rezerwacje/base.html' %}
 {% load staticfiles %}
 {%block content%}
-<div class="title">LIMIT PRZEKROCZONY!</div>
+<div class="title">LIMIT TURNUSU PRZEKROCZONY!</div>
 <div class="info">
 {{a}}
 {{b}}
@@ -9,7 +9,7 @@ Limit miejsc został przekroczony przez twoją rezerwacje.
 <form method="post">{% csrf_token %}
 <input type="hidden" value="uny" name="h"/>
 <input name="uny" type="submit" value="Kontynuuj mimo to" style="width:310px;letter-spacing:1px;"/>
-</form> 
+</form>
 <form method="post">{% csrf_token %}
 <input type="hidden" value="duy" name="h"/>
 <input name="duy" type="submit" value="Anuluj tę rezerwację(zalecane)" style="width:310px;letter-spacing:1px;"/>

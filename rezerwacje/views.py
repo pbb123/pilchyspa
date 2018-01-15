@@ -36,7 +36,7 @@ def new(request):
                 return render(request,'rezerwacje/rooms.html',{'pokoje':pokoje,'od':od,'do':do})
             else:
                 #od<do
-                return render(request,'rezerwacje/new.html',{'family':family,'e':True,'days':days,'a':(od,do)}) 
+                return render(request,'rezerwacje/new.html',{'family':family,'e':True,'days':days,'a':(od,do)})
         else:#get
             return render(request,'rezerwacje/new.html',{'family':family,'days':days})
     else:#niezalogowany
@@ -91,7 +91,7 @@ def menu(request):
     if request.user.is_authenticated:
         return render(request,'rezerwacje/zalogowany.html',{'user':request.user})
     else:
-        return redirect('login')    
+        return redirect('login')
 def changepass(request):
     if request.user.is_authenticated:
         if request.method=="POST":
@@ -153,6 +153,8 @@ def ludzie(request,pk):
         rezerwacja=get_object_or_404(Rezerwacja,id=pk)
         if request.method=="POST":
             rozmiar=request.POST['x']
+            if not rozmiar:
+                return render(request,'rezerwacje/people.html',{'e':True})
             rezerwacja.rozmiar=rozmiar
             rezerwacja.save()
             flag=False
@@ -169,13 +171,13 @@ def ludzie(request,pk):
                     rezerwacja.limit=True
                     rezerwacja.save()
                     return redirect('limit',pk=pk)
-                    
+
             return render(request,'rezerwacje/koniec_rezerwacji.html',{'komunikat':True})
         else:
-            return render(request,'rezerwacje/people.html',{})
+            return render(request,'rezerwacje/people.html',{'e':False})
             #get
     else:
-        return redirect('login')  
+        return redirect('login')
 def limit(request,pk):
     if request.user.is_authenticated:
         if request.method=="POST":

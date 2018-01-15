@@ -4,8 +4,9 @@ from django.contrib.auth.models import User
 class Rodzina(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     liczebność=models.IntegerField()
+    nazwisko=models.TextField()
     def __str__(self):
-        return str(self.user)
+        return self.nazwisko
 class Pokoj(models.Model):
     rozmiar=models.IntegerField()
     nazwa=models.TextField()
@@ -23,11 +24,11 @@ class Rezerwacja(models.Model):
      limit=models.NullBooleanField()
      def __str__(self):
          return "Od: "+str(self.od)+" Do: "+str(self.do)+" Przez: "+str(self.rodzina)+" W pokoju: "+str(self.pokoj)
-    
+
 class Error(models.Model):
     rodzina=models.ForeignKey(Rodzina,on_delete=models.CASCADE)
     opis=models.TextField()
-    
+
 class Day(models.Model):
     numer=models.IntegerField()
     limit=models.IntegerField()

@@ -5,7 +5,7 @@
 <ul>
 {%for rez in rezerwacje%}
 <li>
-{{rez}} {%if rez.limit%}<div class="error">LIMIT PRZEKROCZONY</div>{%endif%}
+{{rez}} {%if rez.limit%}<div class="error">LIMIT TURNUSU PRZEKROCZONY</div>{%endif%}
 {%if rez.rodzina.user == u%}
 <a href="/del/{{rez.id}}" title="Usuń">
 <i class="icon-trash-empty">
