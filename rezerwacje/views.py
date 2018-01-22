@@ -151,6 +151,8 @@ def autor(request):
 def ludzie(request,pk):
     if request.user.is_authenticated:
         rezerwacja=get_object_or_404(Rezerwacja,id=pk)
+        if not rezerwacja.rodzina.user==request.user:
+            return redirect("/")
         if request.method=="POST":
             rozmiar=request.POST['x']
             if not rozmiar:
@@ -180,6 +182,9 @@ def ludzie(request,pk):
         return redirect('login')
 def limit(request,pk):
     if request.user.is_authenticated:
+        rezerwacja=get_object_or_404(Rezerwacja,id=pk)
+        if not rezerwacja.rodzina.user==request.user:
+            return redirect("/")
         if request.method=="POST":
             wynik=request.POST['h']
             if wynik=="uny":
