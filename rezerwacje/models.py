@@ -6,6 +6,8 @@ class Rodzina(models.Model):
     liczebność=models.IntegerField()
     nazwisko=models.TextField()
     def __str__(self):
+        if str(self.nazwisko)=="":
+            return str(self.user)
         return self.nazwisko
 class Pokoj(models.Model):
     rozmiar=models.IntegerField()
