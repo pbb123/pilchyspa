@@ -25,7 +25,9 @@ class Rezerwacja(models.Model):
      rozmiar=models.IntegerField(null=True)
      limit=models.NullBooleanField()
      def __str__(self):
-         return "Od: "+str(self.od)+" Do: "+str(self.do)+" Przez: "+str(self.rodzina)+" W pokoju: "+str(self.pokoj)
+         od=Day.objects.get(numer=self.od)
+         do=Day.objects.get(numer=self.do)
+         return "Od: "+str(od)+" Do: "+str(do)+" Przez: "+str(self.rodzina)+" W pokoju: "+str(self.pokoj)
 
 class Error(models.Model):
     rodzina=models.ForeignKey(Rodzina,on_delete=models.CASCADE)
